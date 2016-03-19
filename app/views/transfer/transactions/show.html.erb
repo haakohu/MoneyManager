@@ -1,0 +1,10 @@
+<p>
+From: <%=@transaction.from.name%>
+</p>
+To : <%=@transaction.to.name%>
+<p>
+Amount: <%=@transaction.amount%>
+</p>
+Date: <%=@transaction.transfer_date.to_s%>
+
+<%= link_to 'Edit',edit_transfer_transaction_path(@transaction)%>

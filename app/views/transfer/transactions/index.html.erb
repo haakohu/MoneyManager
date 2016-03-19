@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>From Account</th>
+      <th>To account</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th>Transfer date</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <%@transactions.each do |t| %>
+    <tr>
+        <td><%=t.from.name%></td>
+        <td><%=t.to.name%></td>
+        <td><%=t.amount%></td>
+        <td><%=t.description%></td>
+        <td><%=t.transfer_date%></td>
+    </tr>
+
+    <%end%>
+  </tbody>
+</table>
