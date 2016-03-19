@@ -1,1 +1,18 @@
-index!
+<table class="table">
+  <thead>
+    <tr>
+      <th>Account</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <%@accounts.each do |t| %>
+    <tr>
+        <td><%=t.name%></td>
+        <td><%=t.balance%></td>
+    </tr>
+
+    <%end%>
+  </tbody>
+</table>
