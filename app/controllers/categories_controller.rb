@@ -9,6 +9,9 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
   def edit
+    if @category.user != current_user
+      redirect_to master_categories_url, notice: 'You cannot edit a default category.'
+    end
   end
   def create
     @category = Category.new(category_params)
@@ -20,16 +23,24 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if @category.update(category_params)
-      redirect_to @category, notice: 'Category was successfully updated.'
+    if @category.user != current_user
+      if @category.update(master_category_params)
+        redirect_to @category, notice: 'Category was successfully updated.'
+      else
+        render :new
+      end
     else
-      render :edit
+      redirect_to master_categories_url, notice: 'You cannot edit a default category.'
     end
   end
 
   def destroy
-    @category.destroy
-    redirect_to master_categories_path, notice: 'Category was successfully destroyed.'
+    if @category.user != current_user
+      @category.destroy
+      redirect_to master_categories_url, notice: 'Master category was successfully destroyed.'
+    else
+      redirect_to master_categories_url, notice: 'You cannot destroy a default categroy'
+    end
   end
 
   private
