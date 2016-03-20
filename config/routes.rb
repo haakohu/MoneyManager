@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :transactions
   end
   resources :accounts
+  resources :master_categories
 
 end

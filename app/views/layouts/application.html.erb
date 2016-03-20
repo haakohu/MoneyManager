@@ -17,6 +17,9 @@
       <li class="nav-item<%= ' active' if params[:controller] == 'transfer/transactions'%>">
         <a class="nav-link" <%=link_to 'Transaction',transfer_transactions_path%></a>
       </li>
+      <li class="nav-item<%= ' active' if params[:controller] == 'master_categories'%>">
+        <a class="nav-link" <%=link_to 'Categories',master_categories_path%></a>
+      </li>
     </ul>
   </nav>
 

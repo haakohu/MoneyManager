@@ -33,7 +33,7 @@ class Transfer::TransactionsController < ApplicationController
     if @transaction.update(transaction_params)
       old_transaction.revert_transaction
       @transaction.add_transfer
-      redirect_to [:transfer, @transaction], notice: 'Transaction was successfully updated.'
+      redirect_to [:transfer, @transaction], notice: 'Tra nsaction was successfully updated.'
     else
       render :edit
   end
