@@ -1,4 +1,4 @@
-class Outcome < ApplicationRecord
+class Income < ApplicationRecord
   belongs_to :account
   belongs_to :category
   belongs_to :user
@@ -26,14 +26,14 @@ class Outcome < ApplicationRecord
         a.save
       end
       self.set_processed(true)
-      self.account.withdraw(amount)
+      self.account.deposit(amount)
     end
   end
 
 
   def revert_transaction
     if processed
-      self.account.deposit(self.amount)
+      self.account.withdraw(self.amount)
     end
   end
 end

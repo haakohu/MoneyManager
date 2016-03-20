@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Transfer::OutControllerTest < ActionDispatch::IntegrationTest
+class IncomeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320152603) do
+ActiveRecord::Schema.define(version: 20160320193652) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -49,6 +49,23 @@ ActiveRecord::Schema.define(version: 20160320152603) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "incomes", force: :cascade do |t|
+    t.integer  "account_id"
+    t.float    "amount"
+    t.string   "description"
+    t.string   "payee"
+    t.integer  "category_id"
+    t.date     "transfer_date"
+    t.integer  "user_id"
+    t.boolean  "processed"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "incomes", ["account_id"], name: "index_incomes_on_account_id"
+  add_index "incomes", ["category_id"], name: "index_incomes_on_category_id"
+  add_index "incomes", ["user_id"], name: "index_incomes_on_user_id"
 
   create_table "master_categories", force: :cascade do |t|
     t.string   "name"

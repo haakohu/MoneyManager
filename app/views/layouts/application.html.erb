@@ -23,6 +23,9 @@
       <li class="nav-item<%= ' active' if params[:controller] == 'transfer/outcomes'%>">
         <a class='nav-link' <%=link_to 'Outcomes',transfer_outcomes_path%></a>
       </li>
+      <li class="nav-item<%= ' active' if params[:controller] == 'transfer/incomes'%>">
+        <a class='nav-link' <%=link_to 'Incomes',transfer_incomes_path%></a>
+      </li>
     </ul>
   </nav>
   <% if notice or alert %>

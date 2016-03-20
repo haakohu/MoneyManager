@@ -1,2 +1,0 @@
-module Transfer::OutHelper
-end

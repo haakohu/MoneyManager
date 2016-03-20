@@ -1,0 +1,2 @@
+module Transfer::IncomesHelper
+end

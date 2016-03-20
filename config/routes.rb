@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :transfer do
     resources :transactions
     resources :outcomes
+    resources :incomes
   end
   resources :accounts
   resources :master_categories
