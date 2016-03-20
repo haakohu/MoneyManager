@@ -1,0 +1,24 @@
+<%=form_for [:transfer, transaction] do |f| %>
+
+  <div class='form-group'>
+    <%= f.label :amount%>
+    <%= f.number_field :amount ,placeholder: 'Amount'%>
+  </div>
+  <%= f.label :account%>
+  <%= f.collection_select :account_id, Account.all.find_all{|t| t.user == current_user}, :id, :name %>
+  <%= f.text_field :description, placeholder: 'Description'%>
+  <%= f.text_field :transfer_date, 'data-provide' =>'datepicker', value: transaction.transfer_date.to_s ,class: 'datepicker'%>
+  <%= f.text_field :payee, placholder: 'Payee'%>
+  <%= f.select :category_id, options_for_select(Category.get_categories(current_user).map{|t| [t.master_category.name + "-" +t.name,t.id]}),selected: :category_id%>
+
+  <%=f.submit%>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+      format: "yyyy/mm/dd"
+    });
+  });
+</script>
+
+<%end%>

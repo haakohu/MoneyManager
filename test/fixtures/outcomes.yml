@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: one
+  amount: 1.5
+  description: MyString
+  payee: MyString
+  category: one
+  transfer_date: 2016-03-20
+  user: one
+
+two:
+  account: two
+  amount: 1.5
+  description: MyString
+  payee: MyString
+  category: two
+  transfer_date: 2016-03-20
+  user: two

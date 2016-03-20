@@ -20,6 +20,9 @@
       <li class="nav-item<%= ' active' if params[:controller] == 'master_categories'%>">
         <a class="nav-link" <%=link_to 'Categories',master_categories_path%></a>
       </li>
+      <li class="nav-item<%= ' active' if params[:controller] == 'transfer/outcomes'%>">
+        <a class='nav-link' <%=link_to 'Outcomes',transfer_outcomes_path%></a>
+      </li>
     </ul>
   </nav>
   <% if notice or alert %>
