@@ -1,4 +1,37 @@
 
 
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Master Category</th>
+      <th colspan="3">
+    </tr>
+  </thead>
+  <tbody>
 
-<%=link_to 'New master category',new_master_category_path%>
+    <%@master_categories.each do |master_category| %>
+      <tr class='table-active'>
+        <td><%=master_category.name%></td>
+        <td>nil</td>
+        <td><%=link_to 'Show',master_category_path(master_category)%></td>
+        <td><%=link_to 'Edit',edit_master_category_path(master_category)%></td>
+        <td><%=link_to 'Destroy',master_category,method: :delete, data: {confirm: 'Are you sure?'}%></td>
+      </tr>
+      <%categories = Category.all.find_all{|t| t.master_category == master_category}%>
+      <%categories.each do |category|%>
+        <tr class>
+          <td><%=category.name%></td>
+          <td><%=category.master_category.name%></td>
+          <td><%=link_to 'Show',category_path(category)%></td>
+          <td><%=link_to 'Edit', edit_category_path(category)%></td>
+          <td><%=link_to 'Destroy',category,method: :delete, data: {confirm: 'Are you sure?'}%></td>
+        </tr>
+        <%end%>
+    <%end%>
+  </tbody>
+</table>
+
+
+<li><%=link_to 'New master category',new_master_category_path%></li>
+<li><%=link_to 'New category',new_category_path%></li>

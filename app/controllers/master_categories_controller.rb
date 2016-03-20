@@ -1,7 +1,7 @@
 class MasterCategoriesController < ApplicationController
   before_action :set_master_category, only: [:show]
   def index
-    @master_categories = MasterCategory.all.find_all{|t| t.user == current_user}
+    @master_categories = MasterCategory.get_master_categories(current_user)
   end
 
   def new

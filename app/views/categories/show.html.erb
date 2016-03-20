@@ -1,0 +1,6 @@
+
+<p>Name: <%=@category.name%></p>
+Master category: <%=@category.master_category.name%>
+
+<%=link_to 'Edit',edit_category_path(@category)%>
+<%=link_to 'Destroy',@category, method: :delete, data: {confirm: 'Are you sure?'}%>

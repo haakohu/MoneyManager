@@ -15,7 +15,7 @@ class Transaction < ApplicationRecord
     self.save
   end
 
-  def do_transfer(amount,transfer_date) 
+  def do_transfer(amount,transfer_date)
     if self.amount == amount && self.transfer_date.to_s == transfer_date
       if self.processed
         a = Account.new
@@ -35,4 +35,6 @@ class Transaction < ApplicationRecord
       self.to.withdraw(amount)
     end
   end
+
+
 end

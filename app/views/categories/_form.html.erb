@@ -1,0 +1,5 @@
+<%=form_for category do |f|%>
+  <%=f.text_field :name, placeholder: 'Name'%>
+  <%=f.collection_select :master_category_id, MasterCategory.all.find_all{|t| t.user == current_user}, :id, :name%>
+  <%= f.submit%>
+<%end%>

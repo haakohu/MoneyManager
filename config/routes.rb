@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   end
   resources :accounts
   resources :master_categories
+  resources :categories
 
 end
