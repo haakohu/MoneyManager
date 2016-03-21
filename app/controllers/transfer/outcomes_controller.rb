@@ -34,7 +34,6 @@ class Transfer::OutcomesController < ApplicationController
   end
 
   def create
-
     @outcome = Outcome.new(outcome_params)
     @outcome.user = current_user
     if @outcome.save
