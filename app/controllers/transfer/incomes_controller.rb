@@ -1,5 +1,5 @@
 class Transfer::IncomesController < ApplicationController
-  before_action :set_income, only: [:show,:edit,:destroy]
+  before_action :set_income, only: [:show,:edit,:destroy,:update]
 
   def show
   end
@@ -21,7 +21,7 @@ class Transfer::IncomesController < ApplicationController
     if @income.update(income_params)
       old_income.revert_transaction
       @income.add_transfer
-      redirect_to @income, notice: 'Income was successfully updated.'
+      redirect_to [:transfer,@income], notice: 'Income was successfully updated.'
     else
       render :edit
     end

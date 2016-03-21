@@ -1,5 +1,5 @@
 class Transfer::OutcomesController < ApplicationController
-  before_action :set_outcome, only: [:show,:edit,:destroy]
+  before_action :set_outcome, only: [:show,:edit,:destroy,:update]
 
   def show
   end
@@ -21,7 +21,7 @@ class Transfer::OutcomesController < ApplicationController
     if @outcome.update(outcome_params)
       old_outcome.revert_transaction
       @outcome.add_transfer
-      redirect_to @outcome, notice: 'Outcome was successfully updated.'
+      redirect_to [:transfer,@outcome], notice: 'Outcome was successfully updated.'
     else
       render :edit
     end
