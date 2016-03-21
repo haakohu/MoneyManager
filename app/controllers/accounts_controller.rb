@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: [:show]
+  before_action :set_account, only: [:show,:edit,:destroy,:update]
   def index
     @accounts = Account.all.find_all{|t| t.user == current_user}
   end
@@ -8,7 +8,8 @@ class AccountsController < ApplicationController
     @account = Account.new
   end
 
-
+  def edit
+  end
   def create
     @account = Account.new(account_params)
     @account.user = current_user
@@ -16,6 +17,19 @@ class AccountsController < ApplicationController
       redirect_to account_path(@account), notice: 'Account was sucessfully created'
     else
       render :new
+    end
+  end
+
+  def destroy
+    @account.destroy
+    rerirect_to accounts_path, notice: 'Account was successfully destroyed.'
+  end
+
+  def update
+    if @account.update(account_params)
+      redirect_to @account, notice: 'Account was successfully edited.'
+    else
+      render :edit
     end
   end
 

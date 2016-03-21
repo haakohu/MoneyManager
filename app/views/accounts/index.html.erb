@@ -3,6 +3,7 @@
     <tr>
       <th>Account</th>
       <th>Balance</th>
+      <th colspan="3">
     </tr>
   </thead>
   <tbody>
@@ -11,9 +12,16 @@
     <tr>
         <td><%=t.name%></td>
         <td><%=t.balance%></td>
+        <td><%=link_to 'Show',account_path(t)%></td>
+        <td><%=link_to 'Edit',edit_account_path(t)%></td>
+        <td><%=link_to 'Destroy',t,method: :delete, data: {confirm: 'Are you sure?'}%></td>
     </tr>
-
     <%end%>
+    <tr>
+      <td>Sum av kontoer</td>
+      <td><%=@accounts.map{|t| t.balance}.sum%></td>
+      <td colspan="3">
+    </tr>
   </tbody>
 </table>
 
