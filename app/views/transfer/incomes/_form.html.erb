@@ -9,7 +9,7 @@
   <%= f.text_field :description, placeholder: 'Description'%>
   <%= f.text_field :transfer_date, 'data-provide' =>'datepicker', value: transaction.transfer_date.to_s ,class: 'datepicker'%>
   <%= f.text_field :payee, placeholder: 'Payee'%>
-  <%= f.select :category_id, options_for_select(Category.get_categories(current_user).find_all{|t| t.master_category.name == 'Income'}.map{|t| [t.master_category.name + "-" +t.name,t.id]}),selected: :category_id%>
+  <%= f.select :category_id, grouped_options_for_select(MasterCategory.get_list_with_income_subcat),selected: :category_id%>
 
   <%=f.submit%>
 
