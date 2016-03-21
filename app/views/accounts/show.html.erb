@@ -4,3 +4,6 @@
   name: <%=@account.name%>
 </p>
 balance: <%=@account.balance%>
+<li><%=link_to 'Edit', edit_account_path(@account)%></li>
+<li><%=link_to 'Destroy', @account, method: :delete, data: {confirm: 'Are you sure?'}%></li>
+<li><%=link_to 'Back',accounts_path%></li>
