@@ -1,4 +1,5 @@
 class Transfer::TransactionsController < ApplicationController
+  include TransferCommon
   before_action :set_transaction, only: [:show,:destroy,:edit,:update]
   def index
     @transactions =  Transaction.all.find_all{|t| t.user == current_user}
@@ -6,21 +7,13 @@ class Transfer::TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
+    @transaction.transfer_date = Date.today
   end
 
   def create
-    @transaction = Transaction.new(transaction_params)
-    @transaction.user = current_user
-    @transaction.add_transfer
-    if @transaction.description == nil || @transaction.description == ""
-      @transaction.description = "Transaction on: " + @transaction.transfer_date.to_s
-    end
-    if @transaction.save
-      redirect_to [:transfer,@transaction], notice: 'Transaction was sucessfully created'
-    else
-      render :new
-    end
+    common_create(Transaction.new(transaction_params))
   end
+
   def show
   end
 
@@ -29,21 +22,12 @@ class Transfer::TransactionsController < ApplicationController
   end
 
   def update
-    old_transaction = @transaction.dup
-    if @transaction.update(transaction_params)
-      old_transaction.revert_transaction
-      @transaction.add_transfer
-      redirect_to [:transfer, @transaction], notice: 'Transaction was successfully updated.'
-    else
-      render :edit
+    common_update(@transaction,transaction_params)
   end
 
-  end
   def destroy
-    @transaction.revert_transaction
-    @transaction.destroy
+    common_destroy
     redirect_to transfer_transactions_url, notice: "Transaction was successfully destroyed."
-
   end
   private
     def set_transaction
