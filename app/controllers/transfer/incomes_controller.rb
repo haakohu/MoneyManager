@@ -1,6 +1,6 @@
 class Transfer::IncomesController < ApplicationController
   before_action :set_income, only: [:show,:edit,:destroy,:update]
-
+  include TransferCommon
   def show
   end
 
@@ -17,30 +17,16 @@ class Transfer::IncomesController < ApplicationController
   end
 
   def update
-    old_income = @income.dup
-    if @income.update(income_params)
-      old_income.revert_transaction
-      @income.add_transfer
-      redirect_to [:transfer,@income], notice: 'Income was successfully updated.'
-    else
-      render :edit
-    end
+    common_update(@income,income_params)
   end
 
   def destroy
-    @income.revert_transaction
-    @income.destroy
+    common_destroy(@income)
     redirect_to transfer_incomes_path, notice: 'Income was successfully destroyed.'
   end
 
   def create
-
-    @income = Income.new(income_params)
-    @income.user = current_user
-    if @income.save
-      @income.add_transfer
-      redirect_to transfer_income_path(@income), notice: 'Income was successfully created.'
-    end
+    common_create(Income.new(income_params))
   end
 
   private

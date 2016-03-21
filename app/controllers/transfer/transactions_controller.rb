@@ -26,7 +26,7 @@ class Transfer::TransactionsController < ApplicationController
   end
 
   def destroy
-    common_destroy
+    common_destroy(@transaction)
     redirect_to transfer_transactions_url, notice: "Transaction was successfully destroyed."
   end
   private
