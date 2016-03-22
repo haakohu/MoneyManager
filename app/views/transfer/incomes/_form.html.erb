@@ -19,7 +19,7 @@
     <%= f.text_field :payee, placeholder: 'Payee',class:'form-control'%>
   </div>
   <div>
-    <%= f.select :category_id, grouped_options_for_select(MasterCategory.get_list_with_income_subcat),selected: :category_id%>
+    <%= f.select :category_id, grouped_options_for_select(MasterCategory.get_list_with_subcat(transaction)),selected: :category_id%>
   </div>
   <%=f.submit%>
 

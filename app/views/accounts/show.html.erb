@@ -1,9 +1,42 @@
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#all" role="tab">All</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#internal" role="tab">Internal</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#outcome" role="tab">Outcome</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#income" role="tab">Income</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="home" role="tabpanel">
+    Home
+  </div>
+  <div class="tab-pane" id="all" role="tabpanel">
+    <%=render 'transfer/table', transactions: @account.get_all_transfers%>
+  </diV>
+  <div class="tab-pane" id="internal" role="tabpanel">
+    <%=render 'transfer/table', transactions: Transaction.get_all_transfers(@account)%>
+  </div>
+  <div class="tab-pane" id="outcome" role="tabpanel">
+    <%=render 'transfer/table', transactions: Outcome.get_all_transfers(@account)%>
+  </div>
+  <div class="tab-pane" id="income" role="tabpanel">
+    <%=render 'transfer/table', transactions: Income.get_all_transfers(@account)%>
+  </div>
+</div>
 
 
-<p>
-  name: <%=@account.name%>
-</p>
-balance: <%=@account.balance%>
+
 <li><%=link_to 'Edit', edit_account_path(@account)%></li>
 <li><%=link_to 'Destroy', @account, method: :delete, data: {confirm: 'Are you sure?'}%></li>
 <li><%=link_to 'Back',accounts_path%></li>

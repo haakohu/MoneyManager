@@ -15,4 +15,8 @@ class Transaction < TransferBase
     self.to.withdraw(self.amount)
     self.from.deposit(self.amount)
   end
+
+  def self.get_all_transfers(account)
+    Transaction.all.find_all{|t| t.to.id == account.id || t.from.id == account.id}
+  end
 end

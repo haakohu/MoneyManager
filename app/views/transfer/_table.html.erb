@@ -1,0 +1,43 @@
+<table class="table">
+  <thead>
+    <th>Type</th>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Processed</th>
+    <th>Description</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Category</th>
+    <th colspan="3"></th>
+  </thead>
+  <tbody>
+    <%transactions.each do |transaction|%>
+      <tr class="table-<%= transaction.class == Transaction ? 'info' : (transaction.class == Income ? 'success' : 'danger')%>">
+        <td><%=transaction.class%></td>
+        <td><%=transaction.transfer_date.to_s%></td>
+        <td><%=transaction.amount%></td>
+        <td><%=transaction.processed%></td>
+        <td><%=transaction.description%></td>
+        <%if transaction.class == Transaction%>
+          <td><%=transaction.from.name%></td>
+          <td><%=transaction.to.name%></td>
+          <td>Internal transaction</td>
+          <td><%=link_to 'Show',transfer_transaction_path(transaction)%></td>
+          <td><%=link_to 'Edit',edit_transfer_transaction_path(transaction)%></td>
+        <%else%>
+          <td><%=transaction.account.name%></td>
+          <td><%=transaction.payee%></td>
+          <td><%=transaction.category.name%></td>
+          <%if transaction.class == Income%>
+            <td><%=link_to 'Show',transfer_income_path(transaction)%></td>
+            <td><%=link_to 'Edit',edit_transfer_income_path(transaction)%></td>
+          <%else%>
+            <td><%=link_to 'Show',transfer_outcome_path(transaction)%></td>
+            <td><%=link_to 'Edit',edit_transfer_outcome_path(transaction)%></td>
+          <%end%>
+        <%end%>
+        <td><%=link_to 'Destroy',[:transfer,transaction], method: :delete, data: {confirm: 'Are you sure?'}%></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>

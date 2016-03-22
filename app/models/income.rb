@@ -11,4 +11,8 @@ class Income < TransferBase
   def abstract_revert_transaction
     self.account.withdraw(self.amount)
   end
+
+  def self.get_all_transfers(account)
+    Income.all.find_all{|t| t.account.id == account.id}
+  end
 end

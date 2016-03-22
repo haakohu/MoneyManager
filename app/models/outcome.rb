@@ -13,5 +13,8 @@ class Outcome < TransferBase
     self.account.deposit(self.amount)
   end
 
-  
+  def self.get_all_transfers(account)
+    Outcome.all.find_all{|t| t.account.id == account.id}
+  end
+
 end
