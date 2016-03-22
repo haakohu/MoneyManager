@@ -11,7 +11,9 @@ class Transfer::TransactionsController < ApplicationController
   end
 
   def create
-    common_create(Transaction.new(transaction_params))
+    byebug
+    @transaction = Transaction.new(transaction_params)
+    common_create(@transaction)
   end
 
   def show
@@ -23,6 +25,7 @@ class Transfer::TransactionsController < ApplicationController
 
   def update
     common_update(@transaction,transaction_params)
+    render :edit
   end
 
   def destroy

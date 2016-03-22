@@ -26,7 +26,8 @@ class Transfer::IncomesController < ApplicationController
   end
 
   def create
-    common_create(Income.new(income_params))
+    @income = Income.new(income_params)
+    common_create(@income)
   end
 
   private

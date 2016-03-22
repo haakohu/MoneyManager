@@ -1,4 +1,4 @@
-<form role="form">
+
 <%=form_for [:transfer, transaction] do |f| %>
 
   <div class='form-group'>
@@ -21,9 +21,8 @@
   <div>
     <%= f.select :category_id, grouped_options_for_select(MasterCategory.get_list_with_income_subcat),selected: :category_id%>
   </div>
-  <div class='btn btn-default'>
-    <%=f.submit%>
-  </div>
+  <%=f.submit%>
+
   <script type="text/javascript">
   $(document).ready(function(){
     $('.datepicker').datepicker({
@@ -33,4 +32,3 @@
 </script>
 
 <%end%>
-</form>

@@ -1,13 +1,7 @@
 
 
 <table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Master Category</th>
-      <th colspan="3">
-    </tr>
-  </thead>
+
   <tbody>
 
     <%@master_categories.each do |master_category| %>
@@ -30,8 +24,14 @@
         <%end%>
     <%end%>
   </tbody>
+
 </table>
 
 
 <li><%=link_to 'New master category',new_master_category_path%></li>
 <li><%=link_to 'New category',new_category_path%></li>
+
+<button class="btn btn-primary" data-toggle="collapse" data-target="#content">Click me!</button>
+<div class="collapse" id="content" >
+  Content goes here.
+</div>

@@ -26,7 +26,8 @@ class Transfer::OutcomesController < ApplicationController
   end
 
   def create
-    common_create(Outcome.new(outcome_params))
+    @outcome = Outcome.new(outcome_params)
+    common_create(@outcome)
   end
 
   private
