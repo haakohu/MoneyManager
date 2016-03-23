@@ -21,6 +21,5 @@
 .byebug_history
 
 config/deploy/production.rb
-config/database.yml
 config/secrets.yml
 shared/config/database.yml
