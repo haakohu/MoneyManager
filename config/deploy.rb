@@ -1,7 +1,7 @@
 # Change these
 server '46.101.4.23', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'https://github.com/haakohu/MoneyManager.git'
+set :repo_url,        'git@github.com:haakohu/MoneyManager.git'
 set :application,     'MoneyManager'
 set :user,            'hakon'
 set :puma_threads,    [4, 16]
@@ -22,7 +22,6 @@ set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
-set :bundle_gemfile, 'apps/MoneyManager'
 
 ## Defaults:
 # set :scm,           :git
