@@ -1,5 +1,5 @@
 # Change these
-server '46.101.4.23', port: 3000, roles: [:web, :app, :db], primary: true
+server '46.101.4.23', port: 222, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'https://github.com/haakohu/MoneyManager.git'
 set :application,     'MoneyManager'
