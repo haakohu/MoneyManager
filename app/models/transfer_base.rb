@@ -37,4 +37,8 @@ class TransferBase < ApplicationRecord
   def abstract_revert_transaction
     raise 'Error! Abstract method!'
   end
+
+  def self.get_all_transfers_restricted(account,from,to)
+    self.get_all_transfers(account).find_all{|t| t.transfer_date >= from and t.transfer_date <= to}
+  end
 end

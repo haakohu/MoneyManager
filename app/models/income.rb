@@ -15,4 +15,7 @@ class Income < TransferBase
   def self.get_all_transfers(account)
     Income.all.find_all{|t| t.account.id == account.id}
   end
+
+
+
 end

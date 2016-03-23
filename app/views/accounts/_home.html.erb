@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-sm-4">
+
+    <table class="table table-bordered">
+      <thead>
+        <th colspan="2">Overview</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Balance:</td>
+          <td colspan="3"><%=account.balance%>
+        </tr>
+        <tr>
+          <td>Outcome last month:</td>
+          <td><%=account.get_outcome_last_period(1.month.ago)%></td>
+        </tr>
+        <tr>
+          <td>Income last month:</td>
+          <td><%=account.get_income_last_period(1.month.ago)%></td>
+        </tr>
+        <tr>
+          <td>Transaction difference last month:</td>
+          <td><%=account.get_transaction_difference_last_period(1.month.ago)%></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-4">
+    <table class="table table-bordered">
+      <thead>
+        <th colspan="2">Categories - Outcome</th>
+      </thead>
+      <tbody>
+        <%account.get_worst_outcome_category(1.month.ago).each do |list|%>
+          <tr>
+            <td><%=list[0].name%></td>
+            <td><%=list[1]%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-4">
+    <table class="table table-bordered">
+      <thead>
+        <th colspan="2">Categories - Income</th>
+      </thead>
+      <tbody>
+        <%account.get_best_income_category(1.month.ago).each do |list|%>
+          <tr>
+            <td><%=list[0].name%></td>
+            <td><%=list[1]%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>

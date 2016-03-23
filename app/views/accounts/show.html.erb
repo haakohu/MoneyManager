@@ -19,7 +19,7 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane active" id="home" role="tabpanel">
-    Home
+    <%=render 'home',account: @account%>
   </div>
   <div class="tab-pane" id="all" role="tabpanel">
     <%=render 'transfer/table', transactions: @account.get_all_transfers%>
