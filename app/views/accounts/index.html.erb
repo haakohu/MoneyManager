@@ -1,7 +1,8 @@
+
+<%=render 'transfer/form', transaction: @transaction, income: @income, outcome: @outcome%>
 <div id="accordion" role="tablist" aria-multiselectable="true">
   <%@accounts.each do |account|%>
     <div class="panel panel-default">
-
       <div class="panel-heading" role="tab" id="headingOne">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=account.id.to_s%>" aria-expanded="true" aria-controls="collapseOne">

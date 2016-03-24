@@ -1,24 +1,41 @@
-<%=form_for [:transfer, transaction] do |f| %>
 
-  <div class='form-group'>
-    <%= f.label :amount%>
-    <%= f.number_field :amount ,placeholder: 'Amount'%>
-  </div>
-  <%= f.label :account%>
-  <%= f.collection_select :account_id, Account.all.find_all{|t| t.user == current_user}, :id, :name %>
-  <%= f.text_field :description, placeholder: 'Description'%>
-  <%= f.text_field :transfer_date, 'data-provide' =>'datepicker', value: transaction.transfer_date.to_s ,class: 'datepicker'%>
-  <%= f.text_field :payee, placholder: 'Payee'%>
-  <%= f.select :category_id, grouped_options_for_select(MasterCategory.get_list_with_master_and_subcat),selected: :category_id%>
+<form class="form-inline" >
+  <%=form_for [:transfer, transaction] do |f| %>
 
-  <%=f.submit%>
+    <div class="form-group">
+      <%= f.label :account%>
+      <%= f.collection_select :account_id, Account.all.find_all{|t| t.user == current_user}, :id, :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :amount%>
+      <%= f.number_field :amount ,placeholder: 'Amount', class: 'form-control'%>
 
-  <script type="text/javascript">
-  $(document).ready(function(){
-    $('.datepicker').datepicker({
-      format: "dd/mm/yyyy"
+    </div>
+    <div class="form-group">
+      <%= f.label :transfer_date%>
+      <%= f.text_field :transfer_date, 'data-provide' =>'datepicker', value: transaction.transfer_date.to_s ,class: 'datepicker form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :payee%>
+      <%= f.text_field :payee, placholder: 'Payee', class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :category_id%>
+      <%= f.select :category_id, grouped_options_for_select(MasterCategory.get_list_with_subcat(transaction)),selected: :category_id, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :description%>
+      <%= f.text_field :description, placeholder: 'Description',class:'form-control'%>
+    </div>
+
+    <%=f.submit class: 'btn btn-default'%>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('.datepicker').datepicker({
+        format: "dd/mm/yyyy"
+      });
     });
-  });
-</script>
-
-<%end%>
+  </script>
+  <%end%>
+</form>

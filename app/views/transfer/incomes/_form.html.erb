@@ -7,7 +7,7 @@
   </div>
   <div class='form-group'>
     <%= f.label :account%>
-    <%= f.collection_select :account_id, Account.all.find_all{|t| t.user == current_user}, :id, :name %>
+    <%= f.collection_select :account_id, Account.all.find_all{|t| t.user == current_user}, :id, :name, transaction.from_id ? {selected: transaction.from_id} : {} %>
   </div>
   <div class='form-group'>
     <%= f.text_field :description, placeholder: 'Description',class: 'form-control'%>

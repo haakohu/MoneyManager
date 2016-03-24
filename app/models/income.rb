@@ -16,6 +16,10 @@ class Income < TransferBase
     Income.all.find_all{|t| t.account.id == account.id}
   end
 
-
-
+  def self.create_new(account)
+    t = Income.new
+    t.account = account
+    t.transfer_date = Date.today
+    t
+  end
 end

@@ -17,7 +17,6 @@ class MasterCategory < ApplicationRecord
       MasterCategory.all.find_all{|t| t.name == "Income"}.map{|t| [t.name,Category.all.find_all{|f| f.master_category.name == t.name}.map{|f| [f.name,f.id]}]}
     else
       MasterCategory.all.find_all{|t|t.name != 'Income'}.map{|t| t.name}.map{|t| [t, Category.all.find_all{|f| f.master_category.name == t}.map{|f| [f.name,f.id]}]}
-
     end
 
   end

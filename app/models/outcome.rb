@@ -17,4 +17,11 @@ class Outcome < TransferBase
     Outcome.all.find_all{|t| t.account.id == account.id}
   end
 
+
+  def self.create_new(account)
+    t = Outcome.new
+    t.account = account
+    t.transfer_date = Date.today
+    t
+  end
 end

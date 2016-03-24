@@ -2,6 +2,9 @@ class AccountsController < ApplicationController
   before_action :set_account, only: [:show,:edit,:destroy,:update]
   def index
     @accounts = Account.all.find_all{|t| t.user == current_user}
+    @transaction = Transaction.create_new(Account.first)
+    @outcome = Outcome.create_new(Account.first)
+    @income = Income.create_new(Account.first)
   end
 
   def new
@@ -34,6 +37,9 @@ class AccountsController < ApplicationController
   end
 
   def show
+    @transaction = Transaction.create_new(@account)
+    @outcome = Outcome.create_new(@account)
+    @income = Income.create_new(@account)
   end
 
   private
