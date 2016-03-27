@@ -9,7 +9,11 @@ module TransferCommon
     end
     if transfer.save
       transfer.add_transfer
-      redirect_to [:transfer, transfer], notice: 'Transfer was successfully created.'
+      if(transfer.class == Transaction)
+        redirect_to :back, notice: 'Transfer was successfully created.'
+      else
+        redirect_to :back, notice: 'Transfer was successfully created.'
+      end
     else
       render :new
     end

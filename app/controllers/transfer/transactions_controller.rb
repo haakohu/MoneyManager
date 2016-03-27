@@ -11,7 +11,6 @@ class Transfer::TransactionsController < ApplicationController
   end
 
   def create
-    byebug
     @transaction = Transaction.new(transaction_params)
     common_create(@transaction)
   end
